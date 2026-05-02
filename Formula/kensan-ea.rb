@@ -12,11 +12,28 @@ class KensanEa < Formula
     (bin/"kensan-ea").write <<~SH
       #!/bin/bash
       EA_FILE="#{libexec}/kensan-mt-connector-v2.0.0.mq5"
-      EXPERTS_DIR=$(find "$HOME/Library" -name "Experts" -type d 2>/dev/null | grep -Ev ".Trash|Recycle" | head -1)
+
+      EXPERTS_DIR=""
+      CANDIDATES=(
+        "$HOME/Library/Containers/com.metaquotes.metatrader5/Data/Library/Application Support/MetaTrader 5/MQL5/Experts"
+        "$HOME/Library/Application Support/MetaTrader 5/MQL5/Experts"
+        "$HOME/Library/Application Support/net.metaquotes.metatrader5/MQL5/Experts"
+      )
+
+      for p in "${CANDIDATES[@]}"; do
+        if [ -d "$p" ]; then
+          EXPERTS_DIR="$p"
+          break
+        fi
+      done
+
+      if [ -z "$EXPERTS_DIR" ]; then
+        EXPERTS_DIR=$(find "$HOME/Library" -name "Experts" -type d 2>/dev/null | grep -Ev ".Trash|Recycle" | head -1)
+      fi
 
       if [ -z "$EXPERTS_DIR" ]; then
         echo "MetaTrader 5 not found."
-        echo "Install MT5 from metatrader5.com/en/download, then run: kensan-ea"
+        echo "Install MT5: metatrader5.com/en/download, then run: kensan-ea"
         exit 1
       fi
 
@@ -29,7 +46,7 @@ class KensanEa < Formula
 
   def caveats
     <<~EOS
-      Run the following command to install the EA into MetaTrader 5:
+      Run to install the EA into MetaTrader 5:
         kensan-ea
     EOS
   end
