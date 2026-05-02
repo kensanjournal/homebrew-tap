@@ -15,6 +15,7 @@ class KensanEa < Formula
 
       EXPERTS_DIR=""
       CANDIDATES=(
+        "$HOME/Library/Application Support/net.metaquotes.wine.metatrader5/drive_c/Program Files/MetaTrader 5/MQL5/Experts"
         "$HOME/Library/Containers/com.metaquotes.metatrader5/Data/Library/Application Support/MetaTrader 5/MQL5/Experts"
         "$HOME/Library/Application Support/MetaTrader 5/MQL5/Experts"
         "$HOME/Library/Application Support/net.metaquotes.metatrader5/MQL5/Experts"
