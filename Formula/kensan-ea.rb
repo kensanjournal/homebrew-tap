@@ -1,7 +1,7 @@
 class KensanEa < Formula
   desc "Kensan EA connector for MetaTrader 5"
   homepage "https://kensanjournal.com"
-  url "https://kensanjournal.com/downloads/kensan-ea-2.0.0.tar.gz"
+  url "https://github.com/kensanjournal/homebrew-tap/releases/download/v2.0.0/kensan-ea-2.0.0.tar.gz"
   sha256 "c5259694c08ca8a0ef1cd947c28f991142a5005bb4fdd7188bac16ee804e6276"
   version "2.0.0"
   license "Proprietary"
