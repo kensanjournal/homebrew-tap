@@ -1,17 +1,17 @@
 class KensanEa < Formula
   desc "Kensan EA connector for MetaTrader 5"
   homepage "https://kensanjournal.com"
-  url "https://github.com/kensanjournal/homebrew-tap/releases/download/v2.0.0/kensan-ea-2.0.0.tar.gz"
-  sha256 "810353459c752fe11c9206c17a47ab17befd705b376aa92eb97bd435cd4f77fb"
-  version "2.0.0"
+  url "https://github.com/kensanjournal/homebrew-tap/releases/download/v2.1.0/kensan-ea-2.1.0.tar.gz"
+  sha256 "fdbbcae7466d0760e4b2ed3acf1855342149f6b0104fbc7b8a2348ce28597c16"
+  version "2.1.0"
   license "Proprietary"
 
   def install
-    libexec.install "kensan-mt-connector-v2.0.0.ex5"
+    libexec.install "kensan-mt-connector-v2.1.0.ex5"
 
     (bin/"kensan-ea").write <<~SH
       #!/bin/bash
-      EA_FILE="#{libexec}/kensan-mt-connector-v2.0.0.ex5"
+      EA_FILE="#{libexec}/kensan-mt-connector-v2.1.0.ex5"
       EXPERTS_DIR=""
       CANDIDATES=(
         "$HOME/Library/Application Support/net.metaquotes.wine.metatrader5/drive_c/Program Files/MetaTrader 5/MQL5/Experts"
@@ -52,6 +52,6 @@ class KensanEa < Formula
   end
 
   test do
-    assert_predicate libexec/"kensan-mt-connector-v2.0.0.ex5", :exist?
+    assert_predicate libexec/"kensan-mt-connector-v2.1.0.ex5", :exist?
   end
 end
